@@ -1,13 +1,11 @@
 This directory has the below structure:
 
-<FOLDER1>
-	<FOLDER2>
-		<JSON FILE>
-			.
-			.
-			.
-			.
-		
+* FOLDER1
+ * FOLDER2
+     * filename1.json
+     * filename2.json
+     * filename3.json
+     * filename4.json
 
 FOLDER1 name will be treated as the index of the elastic search.
 FOLDER2 name will be treatd as the type of the elastic search.
