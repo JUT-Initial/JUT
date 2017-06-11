@@ -78,8 +78,8 @@ public class DataSourceImporter {
 
     private void uploadDocumentsThroughRest(String urlString, List<File> docsToUpload) throws IOException {
         HttpURLConnection conn = null;
-        try {
-            for (File document : docsToUpload) {
+        for (File document : docsToUpload) {
+            try {
                 String filename = getFilenameWithoutExtension(document);
                 URL url = new URL(urlString + "/" + filename + PRETTY_PRINT); //the json file name is the document id in elastic...
                 conn = (HttpURLConnection) url.openConnection();
@@ -112,10 +112,10 @@ public class DataSourceImporter {
                 while ((output = br.readLine()) != null) {
                     System.out.println(output);
                 }
-            }
-        } finally {
-            if (conn != null) {
-                conn.disconnect();
+            } finally {
+                if (conn != null) {
+                    conn.disconnect();
+                }
             }
         }
     }
