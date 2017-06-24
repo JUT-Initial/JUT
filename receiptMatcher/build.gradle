@@ -1,0 +1,29 @@
+apply plugin: 'java-library'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+	compile 'commons-io:commons-io:2.5'
+	compile 'commons-lang:commons-lang:2.6'
+	
+	compile('org.elasticsearch.client:rest:5.4.2') {
+		exclude group:'commons-logging'
+	}
+	compile 'org.slf4j:jcl-over-slf4j:1.7.25'
+	
+	compile 'com.google.code.gson:gson:2.8.1'
+	
+
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'ch.qos.logback:logback-classic:1.+'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+test {
+    testLogging.showStandardStreams = true
+    testLogging.exceptionFormat = 'full'
+}
+

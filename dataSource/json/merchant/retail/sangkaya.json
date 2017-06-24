@@ -1,0 +1,31 @@
+{
+    "name": "Sangkaya",
+    "brand": "Sangkaya",
+    "companyRegName": "SJ F&B Venture Sdn Bhd",
+    "companyNo": "002355078-D",
+    "industry": [
+        "Food & Beverage",
+        "Catering",
+        "Restaurant"
+    ],
+    "tel": "603-79727798",
+    "address": {
+        "full": "J 06 Kuchai Business Park, Jalan 1/127 Off Jalan Kuchai Lama, 58200 Kuala Lumpur",
+        "post_code": "58200",
+        "state": "Kuala Lumpur",
+        "country": "Malaysia",
+        "country_code": 
+    },
+    "outlet": [
+        {
+            "type": "mall",
+            "mall": "IOI City Mall",
+            "address": {
+                "full": "LG-40 Lower Ground Floor, IOI City Mall Lebuh IRC, IOI Resort City"
+            }
+        },
+        {
+            "type": "street"
+        }
+    ]
+}
