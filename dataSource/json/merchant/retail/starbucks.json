@@ -1,3 +1,62 @@
 {
- "name" : "starbucks"
+    "name": "Starbucks",
+    "brand": "Starbucks",
+    "companyRegName": "Berjaya Starbucks Coffee Company Sdn Bhd",
+    "companyNo": "462026-H",
+    "website": "http://www.starbucks.com.my",
+    "tagline": "Starbucks DoubleShot. Bring on the day.",
+    "industry": [
+        "Food & Beverage",
+        "Catering",
+        "Restaurant"
+    ],
+    "tel": "603 20525888",
+    "help_line": "1300 13 1313",
+    "address": {
+        "full": "Lot 10-04, Level 10, Berjaya Times Square, No.1, Jalan Imbi, 55100 Kuala Lumpur, Malaysia",
+        "post_code": "55100",
+        "city": "Kuala Lumpur",
+        "state": "Wilayah Persekutuan",
+        "country": "Malaysia",
+        "country_code": "MY"
+    },
+    "outlet": [
+        {
+            "type": "mall",
+            "name": "IOI City Mall",
+            "address": {
+                "lot": null,
+                "full": "IOI City Mall, Lebuh IRC, IOI Resort City, 62502 Putrajaya, Malaysia",
+                "post_code": "62502",
+                "state": "Selangor",
+                "country": "Malaysia",
+                "country_code": "MY"
+            }
+        },
+        {
+            "type": "mall",
+            "name": "Metro Point",
+            "address": {
+                "full": "8, Jalan Jelok Indah 9, Taman Jelok Indah, 43000 Kajang, Selangor, Malaysia",
+                "post_code": "43000",
+                "city": "Kajang",
+                "state": "Selangor",
+                "country": "Malaysia",
+                "country_code": "MY"
+            }
+        },
+        {
+            "type": "office",
+            "name": "Wisma HB",
+            "address": {
+                "full": "Megan Avenue II, 12, Jalan Yap Kwan Seng, Kampung Baru, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia",
+                "post_code": "50450",
+                "city": "Kuala Lumpur",
+                "state": "Wilayah Persekutuan",
+                "country": "Malaysia",
+                "country_code": "MY"
+            }
+        }
+    ]
+    
 }

@@ -1,3 +1,38 @@
 {
-   "name" : "tesco"
+    "name": "Tesco",
+    "brand": "Tesco",
+    "companyRegName": "Tesco Stores (Malaysia) Sdn Bhd",
+    "companyNo": "521419-K",
+    "website": "http://www.tesco.com.my",
+    "tagline": null,
+    "industry": [
+        "Hypermarket",
+        "Retail",
+        "Merchandise"
+    ],
+    "tel": "603 87341369",
+    "help_line": "1300 13 1313",
+    "address": {
+        "full": "Level 3, Kepong Village Mall, No. 3, Jalan 7A/62A, Bandar Manjalara 52200 Kuala Lumpur, Malaysia",
+        "post_code": "52200",
+        "city": "Kuala Lumpur",
+        "state": "Wilayah Persekutuan",
+        "country": "Malaysia",
+        "country_code": "MY"
+    },
+    "outlet": [
+        {
+            "type": "street",
+            "name": "Persiaran Saujana Impian",
+            "address": {
+                "full": "Lot PT 37820, Persiaran Saujana Impian, Saujana Impian, 43000 Kajang, Selangor, Malaysia",
+                "post_code": "43000",
+                "city": "Kajang",
+                "state": "Selangor",
+                "country": "Malaysia",
+                "country_code": "MY"
+            }
+        }
+    ]
+    
 }

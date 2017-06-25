@@ -18,6 +18,8 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 import com.jutapp.es.ESUtils;
 import com.jutapp.receipt.Receipt;
+import com.jutapp.receipt.es.ESHits;
+import com.jutapp.receipt.es.ESIndex;
 import com.jutapp.receipt.es.ESResponse;
 
 public class ReceiptMatcher {
@@ -47,17 +49,29 @@ public class ReceiptMatcher {
 
 			StatusLine status = resp.getStatusLine();
 			statusCode = status.getStatusCode();
+			
+			if (200 != statusCode) {
+				RuntimeException e = new RuntimeException(String.format("Elastic search error, status[%s], reason[%s]", statusCode, status.getReasonPhrase()));
+				logger.error(e.getMessage(), e);
+				throw e;
+			}
+			
 			HttpEntity entity = resp.getEntity();
 			byte[] b = IOUtils.readFully(entity.getContent(), (int) entity.getContentLength());
 			String responseText = new String(b, "UTF-8");
 			
 			Gson gson = ESUtils.newGson();
 			ESResponse esResp = gson.fromJson(responseText, ESResponse.class);
-			System.out.println(esResp.getTook());
-			System.out.println(esResp.isTimed_out());
-			System.out.println(esResp.get_shards().getSuccessful());
-			System.out.println(esResp.getHits().getMax_score());
-			System.out.println(esResp.getHits().getHits().getClass());
+			
+			
+			ESHits hits = esResp.getHits();
+			if (hits.getTotal() == 1) {
+				receipt.setMerchant(hits.getHits().iterator().next().get_source());
+			} else {
+				for (ESIndex index : hits.getHits()) {
+					receipt.getSuspectedMerchants().add(index.get_source());
+				}
+			}
 			
 		} catch (IOException e) {
 			logger.error("Error in ElasticSearch.", e);
