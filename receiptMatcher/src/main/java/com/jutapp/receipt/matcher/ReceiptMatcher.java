@@ -35,8 +35,9 @@ public class ReceiptMatcher {
 
 
 	public Receipt recognizeReceipt(String text) {
+		ReceiptTextHolder textHolder = new ReceiptTextHolder(text);
 		
-		String esBody = String.format(loadMultiSearchTemplate(), ESUtils.escapeForJson(text));
+		String esBody = String.format(loadMultiSearchTemplate(), textHolder.asJSON());
 		
 		RestClient restClient = RestClient.builder(esHost).build();
 		Response resp;
@@ -106,6 +107,4 @@ public class ReceiptMatcher {
 		return sb.toString();
 	}
 	
-	
-
 }
