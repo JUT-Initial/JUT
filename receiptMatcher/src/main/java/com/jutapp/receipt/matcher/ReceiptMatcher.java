@@ -12,8 +12,6 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.nio.entity.NStringEntity;
 import org.elasticsearch.client.Response;
 import org.elasticsearch.client.RestClient;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 import com.jutapp.es.ESUtils;
@@ -22,9 +20,10 @@ import com.jutapp.receipt.es.ESHits;
 import com.jutapp.receipt.es.ESIndex;
 import com.jutapp.receipt.es.ESResponse;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class ReceiptMatcher {
-	private static final Logger logger = LoggerFactory.getLogger(ReceiptMatcher.class);
-	
 	private static HttpHost esHost;
 	
 	static {
@@ -53,7 +52,7 @@ public class ReceiptMatcher {
 			
 			if (200 != statusCode) {
 				RuntimeException e = new RuntimeException(String.format("Elastic search error, status[%s], reason[%s]", statusCode, status.getReasonPhrase()));
-				logger.error(e.getMessage(), e);
+				log.error(e.getMessage(), e);
 				throw e;
 			}
 			
@@ -75,13 +74,13 @@ public class ReceiptMatcher {
 			}
 			
 		} catch (IOException e) {
-			logger.error("Error in ElasticSearch.", e);
+			log.error("Error in ElasticSearch.", e);
 			throw new RuntimeException(e);
 		} finally {
 			try {
 				restClient.close();
 			} catch (IOException e) {
-				logger.error("Error closing elastic search client.", e);
+				log.error("Error closing elastic search client.", e);
 			}
 		}
 		

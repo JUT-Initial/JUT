@@ -6,16 +6,16 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.jutapp.es.ESUtils;
 
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class ReceiptTextHolder {
-	private static final Logger logger = LoggerFactory.getLogger(ReceiptTextHolder.class);
-	
+
 	private List<String> lines = new ArrayList<String>();
-	private String text;
+	private @Getter String text;
 	
 	public ReceiptTextHolder(String text) {
 		this.text = text;
@@ -27,7 +27,7 @@ public class ReceiptTextHolder {
 			}
 		} catch (IOException e) {
 			// Shoudn't throw error
-			logger.error(e.getMessage(), e);
+			log.error(e.getMessage(), e);
 		}
 	}
 	public void put(String line) {

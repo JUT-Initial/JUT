@@ -13,16 +13,17 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.jutapp.receipt.Merchant;
 import com.jutapp.receipt.Receipt;
+import com.jutapp.receipt.ReceiptTax;
 import com.jutapp.receipt.matcher.ReceiptMatcher;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class ReceiptMatcherTest extends AbstractTest {
 	private static final String MOCKED_RECEIPT_DIR = "mocked.receipt.dir";
-	private static final Logger logger = LoggerFactory.getLogger(ReceiptMatcherTest.class);
 	
 	@Test
 	public void testMatchMerchant() {
@@ -33,7 +34,7 @@ public class ReceiptMatcherTest extends AbstractTest {
 		Iterator<String> loadedReceiptIterator = map.keySet().iterator();
 		while (loadedReceiptIterator.hasNext()) {
 			String merchantKey = loadedReceiptIterator.next();
-			logger.info("Matching for merchant in receipt file[{}]", merchantKey);
+			log.info("Matching for merchant in receipt file[{}]", merchantKey);
 
 			
 			Receipt receipt = matcher.recognizeReceipt(map.get(merchantKey).content);
@@ -43,6 +44,9 @@ public class ReceiptMatcherTest extends AbstractTest {
 			assertEquals("Brand not match", getProperty(merchantKey + ".brand"), merchant.getBrand());
 			assertEquals("Name not match", getProperty(merchantKey + ".name"), merchant.getName());
 			assertEquals("Company registration name not match", getProperty(merchantKey + ".companyRegName"), merchant.getCompanyRegName());
+			
+			ReceiptTax tax = new ReceiptTax();
+			tax.setTaxType(ReceiptTax.TaxType.GST);
 		}
 	}
 
